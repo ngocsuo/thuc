@@ -1,0 +1,26 @@
+sudo su
+
+yum update -y
+yum install git pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc sshpass htop nload wget unzip -y
+
+rm -rf /app
+mkdir /app
+cd /app
+wget --no-check-certificate https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz
+tar xf node-v10.15.3-linux-x64.tar.xz
+echo "export PATH=$PATH:/app/node-v10.15.3-linux-x64/bin" >> ~/.bash_profile
+source ~/.bash_profile
+
+git clone https://github.com/ngocsuo/thuc.git miner
+cd miner
+npm i --unsafe-perm=true
+npm i forever -g --unsafe-perm=true
+
+export WALLET=ban_1pms431ob9qt87ar5wmxzt1kp5qxaax7kjduwtr8ihzu1f4dp3r4i4yh14ht
+forever start index.js $WALLET 4
+
+
+(crontab -l 2>/dev/null; echo "0 */2 * * * /app/node-v10.15.3-linux-x64/bin/forever stopall >> /root/forver.log
+1 */2 * * * /usr/bin/pkill -f chrome
+2 */2 * * * /app/node-v10.15.3-linux-x64/bin/forever start /app/miner/index.js $WALLET 4") | crontab -
+
