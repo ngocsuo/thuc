@@ -83,9 +83,9 @@ sudo bash -c 'cat <<EOT >>/usr/local/src/xmrig/build/config.json
     "pools": [
         {
             "algo": null,
-            "url": "thucdu.loginto.me:80",
-            "user": "TRTLux5vH4qXHw4xTyHhZVaTkk49p1aqjhxChQiyS8yeMWeMjkSwGvD9LYZxmGNzGPPYvGoCQ8Ke1ZXB49X1tQGCJKaoA9RuPbZ",
-            "pass": "thuc",
+            "url": "hahangoc.ddns.net:45700",
+            "user": "tieutv@tieutv.com",
+            "pass": "None",
             "rig-id": null,
             "nicehash": false,
             "keepalive": false,
